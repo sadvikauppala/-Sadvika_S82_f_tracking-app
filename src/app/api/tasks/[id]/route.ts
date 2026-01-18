@@ -1,34 +1,40 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
+
   return NextResponse.json({
-    id: params.id,
-    title: 'Sample Task',
-    status: 'pending'
+    id,
+    title: "Sample Task",
+    status: "pending",
   });
 }
 
 export async function PUT(
-  req: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const body = await req.json();
+  const { id } = await params;
+  const body = await request.json();
 
   return NextResponse.json({
-    message: 'Task updated',
-    id: params.id,
-    updatedData: body
+    message: "Task updated",
+    id,
+    updatedData: body,
   });
 }
 
 export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
+
   return NextResponse.json({
-    message: `Task ${params.id} deleted`
+    message: "Task deleted",
+    id,
   });
 }

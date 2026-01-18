@@ -63,6 +63,10 @@ curl -X POST http://localhost:3000/api/tasks \
 
 ---
 
+Frontend Integration
+
+The frontend fetches task data from the internal REST API using the Fetch API. This demonstrates how Next.js can serve as both the frontend and backend within a single project, improving developer experience and simplifying deployment.
+
 ## Reflection
 
 Using file-based routing for API endpoints makes the backend predictable and easy to maintain. Consistent naming and proper HTTP status codes reduce integration errors and help the application scale as more features are added.
