@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tracking Project – Next.js & RESTful API
 
-## Getting Started
+## Project Overview
 
-First, run the development server:
+This is a tracking application built with Next.js and TypeScript. The goal of this project is to demonstrate scalable project structure and RESTful API design using file-based routing.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Folder Structure
+
+```
+src/
+├── app/          # Routes, layouts, and API handlers
+├── components/   # Reusable UI components
+├── lib/          # Utility functions and helpers
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## RESTful API Design
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The backend API is implemented using Next.js App Router under the `app/api/` directory.
 
-## Learn More
+### API Routes
 
-To learn more about Next.js, take a look at the following resources:
+```
+/api/tasks
+/api/tasks/[id]
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## HTTP Methods & Actions
 
-## Deploy on Vercel
+| Method | Route           | Description       |
+| ------ | --------------- | ----------------- |
+| GET    | /api/tasks      | Fetch all tasks   |
+| POST   | /api/tasks      | Create a new task |
+| GET    | /api/tasks/[id] | Fetch task by ID  |
+| PUT    | /api/tasks/[id] | Update a task     |
+| DELETE | /api/tasks/[id] | Delete a task     |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Sample Requests
+
+```bash
+curl http://localhost:3000/api/tasks
+```
+
+```bash
+curl -X POST http://localhost:3000/api/tasks \
+-H "Content-Type: application/json" \
+-d '{"title":"New Task"}'
+```
+
+---
+
+## API Test Evidence
+
+![API Test](./api-1.png)
+![API Test](./api-2.png)
+
+---
+
+## Reflection
+
+Using file-based routing for API endpoints makes the backend predictable and easy to maintain. Consistent naming and proper HTTP status codes reduce integration errors and help the application scale as more features are added.
